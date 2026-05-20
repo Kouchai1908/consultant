@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blogs · The Lobbyist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/shared.css" />
+  <style>
+    .empty-state {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 120px 24px 160px;
+      text-align: center;
+    }
+    .empty-state .ornament {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 32px;
+      color: var(--gold);
+      opacity: .8;
+    }
+    .empty-state h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 3.4vw, 40px);
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+    .empty-state h2 em {
+      color: var(--gold);
+      font-style: italic;
+      font-weight: 400;
+    }
+    .empty-state p {
+      margin-top: 22px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-mute);
+    }
+    .empty-state .rule {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 32px auto;
+    }
+  </style>
+</head>
+<body data-page="blogs">
+  <div id="nav-mount"></div>
+
+  <header class="page-head">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container" style="position:relative;">
+      <div class="crumb"><a href="index.html">Home</a><span>→</span><span>Blogs</span></div>
+      <h1 class="hero-headline">
+        <span class="line"><span>Engage &amp;</span></span>
+        <span class="line"><span><em>learn.</em></span></span>
+      </h1>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="empty-state reveal">
+        <svg class="ornament" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+          <rect x="8" y="10" width="32" height="28" rx="2"/>
+          <path d="M16 4 V14 M32 4 V14 M8 20 H40" stroke-linecap="round"/>
+          <circle cx="24" cy="29" r="3" fill="currentColor" opacity=".7"/>
+        </svg>
+        <h2>Notes, essays &amp; podcast episodes — <em>coming soon.</em></h2>
+        <div class="rule"></div>
+        <p>
+          We&apos;re preparing our first series of writing and recordings
+          on economy, trade, law, environment, fiscal policy, society
+          and culture. Check back shortly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-mount"></div>
+  <script src="assets/shared.js"></script>
+  <script src="assets/chrome.js"></script>
+</body>
+</html>

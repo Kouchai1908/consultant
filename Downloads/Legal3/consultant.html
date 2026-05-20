@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meet Our Consultants · The Lobbyist Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/shared.css" />
+  <style>
+    .consult-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+    }
+    @media (max-width: 880px) { .consult-hero { grid-template-columns: 1fr; gap: 32px; } }
+
+    .lead-card {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      background: var(--bg-elev);
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      padding: 36px;
+      box-shadow: var(--shadow-sm);
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .lead-card:hover { border-color: var(--gold); box-shadow: var(--shadow-lg); }
+    @media (max-width: 760px) { .lead-card { grid-template-columns: 1fr; gap: 24px; } }
+    .lead-photo {
+      aspect-ratio: 4/5;
+      border-radius: 6px;
+      background: linear-gradient(160deg, #2a2519, #0e0c08);
+      position: relative;
+      overflow: hidden;
+    }
+    .lead-photo .ring {
+      position: absolute; top:16px; right:16px;
+      width:36px; height:36px; border:1px solid var(--gold); border-radius:50%;
+      display:grid; place-items:center; color:var(--gold);
+      font-family: var(--serif); font-size:13px;
+      background: rgba(11,10,8,.5); backdrop-filter: blur(4px);
+    }
+    .lead-photo .silhouette {
+      position:absolute; inset:0; display:grid; place-items:end center;
+    }
+    .lead-photo .silhouette svg { width:78%; }
+    .lead-photo .caption {
+      position: absolute;
+      bottom: 14px; left: 14px;
+      color: rgba(245,239,224,.7);
+      font-size: 10.5px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .lead-body h3 { font-size: 30px; }
+    .lead-body .role {
+      margin-top:6px;
+      color:var(--gold);
+      font-size:12.5px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-style: normal;
+    }
+    .lead-body p { color: var(--ink-mute); font-size: 14.5px; line-height: 1.7; margin-top: 16px; }
+    .lead-body .bar { margin-top:24px; padding-top: 22px; border-top: 1px solid var(--line); display:flex; flex-wrap:wrap; gap:18px 28px; font-size:11px; color:var(--ink-mute); letter-spacing:.1em; text-transform:uppercase; }
+    .lead-body .bar strong { display:block; color: var(--ink); font-family: var(--serif); font-size:14.5px; letter-spacing:0; text-transform:none; margin-top:4px; font-weight: 500; }
+    .lead-body .pills { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .lead-body .pills span { font-size: 11.5px; padding: 4px 12px; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--ink-soft); }
+  </style>
+</head>
+<body data-page="consultant">
+  <div id="nav-mount"></div>
+
+  <header class="page-head">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container" style="position:relative;">
+      <div class="crumb"><a href="index.html">Home</a><span>→</span><span>Meet Our Consultants</span></div>
+      <div class="consult-hero">
+        <div>
+          <h1 class="hero-headline">
+            <span class="line"><span>Proud <em>Timorese</em></span></span>
+            <span class="line"><span>professionals.</span></span>
+          </h1>
+        </div>
+        <p class="lede" style="max-width:none;">
+          Driven by passion for sustainable change. Both co-founders
+          remain on every mandate, bringing a decade of experience
+          across WTO and ASEAN trade negotiations, ministerial
+          advisory, and legal &amp; institutional reform.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Co-founders -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="title">
+          <span class="eyebrow">The co-founders</span>
+          <h2>Two consultants, <em class="gold" style="font-style:italic; font-weight:400;">one shared file.</em></h2>
+        </div>
+        <p>Every engagement is led by both co-founders — not delegated to associates.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr; gap: 28px;" class="reveal-stagger">
+
+        <article class="lead-card">
+          <div class="lead-photo">
+            <div class="ring">C-01</div>
+            <div class="silhouette"><svg viewBox="0 0 100 130" aria-hidden="true">
+              <ellipse cx="50" cy="42" rx="22" ry="26" fill="rgba(245,239,224,.16)"/>
+              <path d="M10 130 C 10 92 28 78 50 78 C 72 78 90 92 90 130 Z" fill="rgba(245,239,224,.18)"/>
+              <path d="M34 90 L42 130 L42 110 L58 110 L58 130 L66 90 Z" fill="rgba(11,10,8,.65)"/>
+              <path d="M44 110 L50 130 L56 110 Z" fill="rgba(201,162,83,.85)"/>
+            </svg></div>
+            <div class="caption">Co-founder · Legal</div>
+          </div>
+          <div class="lead-body">
+            <h3 class="serif">Jorginha Martins</h3>
+            <div class="role">Legal Consultant</div>
+            <p>
+              Jorginha is a co-founder and consultant at The Lobbyist
+              and currently serves as Legal Advisor to the Coordinating
+              Minister for Economic Affairs in Timor-Leste. She has over
+              a decade of experience across key government institutions —
+              including the Office of the Prime Minister, the Ministry
+              of Health, and the Office of the Coordinating Minister
+              for Economic Affairs — focusing on legal and institutional
+              reforms in public administration, health governance,
+              economic reforms, and trade and investment policy.
+            </p>
+            <p>
+              Jorginha was part of the WTO trade negotiating team, leading
+              the legislative reform priorities for Timor-Leste&apos;s
+              accession to the WTO and ASEAN accession, and continues
+              to contribute to the country&apos;s regional economic
+              integration. She completed her lawyer course at the
+              Timor-Leste Legal and Judiciary Training Center, with
+              her internship at the national law firm Da Silva
+              Teixeira &amp; Associados.
+            </p>
+            <p>
+              In addition to economic policy, She has supported
+              justice-sector and human-rights initiatives — including
+              capacity-building for judges, prosecutors and public
+              defenders on human trafficking, gender-based violence,
+              and child protection through her work with The Asia
+              Foundation. She has collaborated with CEPAD on access
+              to information, lectured in Fiscal Law and Commercial
+              Law at UNTL, and previously served on the board of
+              SABEH, supporting healthcare access in rural areas.
+            </p>
+            <div class="pills">
+              <span>WTO accession</span>
+              <span>ASEAN reform</span>
+              <span>Public administration</span>
+              <span>Fiscal &amp; commercial law</span>
+              <span>Human rights</span>
+            </div>
+            <div class="bar">
+              <div>Education<strong>LL.B, UNTL · LL.M Civil Law (UNTL / Coimbra, in progress)</strong></div>
+              <div>Current role<strong>Legal Advisor, Coordinating Minister for Economic Affairs</strong></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="lead-card">
+          <div class="lead-photo">
+            <div class="ring">C-02</div>
+            <div class="silhouette"><svg viewBox="0 0 100 130" aria-hidden="true">
+              <ellipse cx="50" cy="42" rx="22" ry="26" fill="rgba(245,239,224,.16)"/>
+              <path d="M10 130 C 10 92 28 78 50 78 C 72 78 90 92 90 130 Z" fill="rgba(245,239,224,.18)"/>
+              <path d="M34 90 L42 130 L42 110 L58 110 L58 130 L66 90 Z" fill="rgba(11,10,8,.65)"/>
+              <path d="M44 110 L50 130 L56 110 Z" fill="rgba(201,162,83,.85)"/>
+            </svg></div>
+            <div class="caption">Co-founder · Economic Policy</div>
+          </div>
+          <div class="lead-body">
+            <h3 class="serif">Maria Martins da Silva</h3>
+            <div class="role">Economic Policy, Trade, Investment &amp; Environmental Consultant</div>
+            <p>
+              Maria is a co-founder and consultant at The Lobbyist.
+              She currently serves as Senior Economic Adviser to the
+              Coordinating Ministry for Economic Affairs in Timor-Leste
+              through the Australian Aid programme PROSIVU.
+            </p>
+            <p>
+              She has more than 10 years of experience in multilateral
+              trade negotiations and economic policy, leading
+              Timor-Leste&apos;s trade negotiating team through the WTO
+              accession process to membership, and most recently
+              supporting ASEAN accession and post-accession. Maria is
+              also an international consultant as a TradeWorthy
+              Associate, providing support across the Asia-Pacific —
+              including ASEAN and APEC work on economic, trade,
+              digital-trade and investment matters.
+            </p>
+            <p>
+              In that capacity she contributed research and technical
+              support to Timor-Leste&apos;s E-Commerce Strategic Action
+              Plan, and project management and research for the APEC
+              Digital Provision Handbook. She supported Laos&apos;
+              ASEAN Chairmanship in 2024 by preparing Ministers&apos;
+              remarks for AEC meetings. As Senior Economic Adviser to
+              the Vice Prime Minister of Timor-Leste, Maria has played
+              a key role in shaping economic policy and trade integration
+              strategies, including microeconomic and macroeconomic
+              analysis to inform government decision-making.
+            </p>
+            <p>
+              Maria has shared her expertise at public lectures and
+              seminars — including at the ISEAS-Yusof Ishak Institute —
+              on the challenges Timor-Leste faces in its journey
+              towards global and regional integration. She previously
+              interned at the World Trade Organization in 2017–2018.
+            </p>
+            <div class="pills">
+              <span>WTO &amp; ASEAN</span>
+              <span>APEC digital trade</span>
+              <span>E-commerce strategy</span>
+              <span>Macro &amp; microeconomic analysis</span>
+              <span>Environment</span>
+            </div>
+            <div class="bar">
+              <div>Education<strong>Postgraduate, Agricultural Economics — SOAS, University of London</strong></div>
+              <div>Current role<strong>Senior Economic Adviser, Coordinating Ministry for Economic Affairs (PROSIVU)</strong></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Network -->
+  <section style="background: var(--bg-mute);">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="title">
+          <span class="eyebrow">The wider bench</span>
+          <h2>Specialists we draw on, <em class="gold" style="font-style:italic; font-weight:400;">when the mandate requires.</em></h2>
+        </div>
+        <p>
+          We collaborate with a trusted network of associates and
+          institutions — engaged on a per-mandate basis, and named on
+          the file.
+        </p>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px;" class="reveal-stagger">
+        <div class="service-card">
+          <h3 style="margin-top:8px;">TradeWorthy</h3>
+          <p style="margin-top:10px;">Associate network — APEC, ASEAN digital-trade, and investment-policy assignments across Asia-Pacific.</p>
+        </div>
+        <div class="service-card">
+          <h3 style="margin-top:8px;">UNTL faculty &amp; alumni</h3>
+          <p style="margin-top:10px;">Drawing on relationships across the National University of Timor-Leste for legal and economic research support.</p>
+        </div>
+        <div class="service-card">
+          <h3 style="margin-top:8px;">Civil-society partners</h3>
+          <p style="margin-top:10px;">Including The Asia Foundation, CEPAD, and SABEH — for access-to-information, justice-sector and rural-health work.</p>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:32px; font-size:13px; max-width:680px;">
+        References from government counterparts, multilateral institutions
+        and private clients are available on request, under confidentiality.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="cta-strip reveal">
+        <div>
+          <span class="eyebrow" style="color:var(--gold);">Direct line</span>
+          <h2 style="margin-top:14px;">Reach the co-founders. <em>Skip the intake form.</em></h2>
+          <p>Jorginha and Maria respond personally within 48 hours.</p>
+        </div>
+        <div class="actions">
+          <a href="mailto:thelobbyist.service@gmail.com" class="btn btn-primary">Email the team <svg class="arrow" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-mount"></div>
+  <script src="assets/shared.js"></script>
+  <script src="assets/chrome.js"></script>
+</body>
+</html>

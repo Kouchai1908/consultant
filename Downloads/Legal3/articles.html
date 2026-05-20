@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Articles · Lobbyist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/shared.css" />
+  <style>
+    .issue-row {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 64px;
+      align-items: end;
+    }
+
+    @media (max-width: 880px) {
+      .issue-row {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .issue-row .meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      max-width: 520px;
+    }
+
+    .issue-row .meta div .l {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+    }
+
+    .issue-row .meta div .v {
+      font-family: var(--serif);
+      font-size: 22px;
+      margin-top: 4px;
+      color: var(--ink);
+    }
+
+    .issue-cover {
+      aspect-ratio: 3/4;
+      border-radius: var(--r-md);
+      background: linear-gradient(160deg, #2a2519, #0e0c08);
+      border: 1px solid var(--line-strong);
+      box-shadow: var(--shadow-lg);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #f5efe0;
+      position: relative;
+      overflow: hidden;
+      max-width: 420px;
+      margin-left: auto;
+      width: 100%;
+    }
+
+    a.issue-cover {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .issue-cover::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border: 1px solid var(--gold);
+      pointer-events: none;
+      opacity: .4;
+    }
+
+    .issue-cover .top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245, 239, 224, .6);
+    }
+
+    .issue-cover .title {
+      font-family: var(--serif);
+      font-size: 44px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--gold);
+    }
+
+    .issue-cover .vol {
+      font-size: 13px;
+      color: rgba(245, 239, 224, .8);
+      font-family: var(--serif);
+      letter-spacing: 0.04em;
+    }
+
+    .issue-cover .rule {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 22px 0;
+    }
+
+    .issue-cover .toc {
+      font-size: 12px;
+      color: rgba(245, 239, 224, .7);
+      line-height: 1.7;
+      font-family: var(--serif);
+    }
+
+    .issue-cover .toc strong {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .cards-wrapper {
+      position: relative;
+      margin-top: 32px;
+    }
+
+    .cards-track {
+      display: flex;
+      gap: 24px;
+      padding-bottom: 12px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
+
+    .cards-track::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .cards-track::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, .14);
+      border-radius: 999px;
+    }
+
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: var(--text);
+      background: rgba(11, 10, 8, .88);
+      border: 1px solid rgba(255, 255, 255, .08);
+      text-decoration: none;
+      font-size: 24px;
+      transition: transform .2s ease, background .2s ease;
+      z-index: 10;
+    }
+
+    .nav-arrow:hover {
+      transform: translateY(-50%) scale(1.05);
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .nav-arrow.prev {
+      left: -20px;
+    }
+
+    .nav-arrow.next {
+      right: -20px;
+    }
+
+    .issue-cover {
+      flex: 0 0 280px;
+      width: auto;
+      min-width: 280px;
+      max-width: 420px;
+    }
+
+    @media (max-width: 760px) {
+      .cards-track {
+        gap: 18px;
+      }
+
+      .nav-arrow.prev {
+        left: 0;
+      }
+
+      .nav-arrow.next {
+        right: 0;
+      }
+
+      .issue-cover {
+        flex: 0 0 240px;
+        min-width: 240px;
+      }
+    }
+
+    .article {
+      background: var(--bg-elev);
+      padding: 36px 36px 32px;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: background .3s;
+    }
+
+    .article:hover {
+      background: var(--bg-mute);
+    }
+
+    .article .num {
+      font-family: var(--serif);
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+    }
+
+    .article .topic {
+      margin-top: 4px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+    }
+
+    .article h3 {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.2vw, 28px);
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin-top: 16px;
+      transition: color .25s;
+    }
+
+    .article:hover h3 {
+      color: var(--gold);
+    }
+
+    .article .abstract {
+      margin-top: 16px;
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      line-height: 1.65;
+      font-family: var(--serif);
+      font-style: italic;
+    }
+
+    .article .by {
+      margin-top: auto;
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--ink-mute);
+      letter-spacing: 0.06em;
+    }
+
+    .article .by .auth {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .article .by .auth .av {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(140deg, #2a2519, #0e0c08);
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 12px;
+      border: 1px solid var(--gold);
+    }
+
+    .article .by .auth strong {
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 14px;
+      letter-spacing: 0;
+    }
+
+    .citation {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 28px;
+      align-items: center;
+      transition: padding .3s;
+      cursor: pointer;
+    }
+
+    .citation:hover {
+      padding-left: 12px;
+    }
+
+    .citation:hover h4 {
+      color: var(--gold);
+    }
+
+    .citation:last-of-type {
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (max-width: 720px) {
+      .citation {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+
+    .citation .ref {
+      font-family: var(--serif);
+      color: var(--gold);
+      font-size: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .citation h4 {
+      font-family: var(--serif);
+      font-size: 19px;
+      transition: color .25s;
+      line-height: 1.3;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .citation .src {
+      color: var(--ink-mute);
+      font-size: 12.5px;
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .citation .meta {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      justify-self: end;
+    }
+  </style>
+</head>
+
+<body data-page="articles">
+  <div id="nav-mount"></div>
+
+  <header class="page-head">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container" style="position:relative;">
+      <div class="crumb"><a href="index.html">Home</a><span>→</span><span>Articles</span></div>
+      <h1 class="hero-headline">
+        <span class="line"><span>Long-form,</span></span>
+        <span class="line"><span>and on the <em>record.</em></span></span>
+      </h1>
+
+    </div>
+  </header>
+
+  <!-- Current issue -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal" style="margin-bottom:40px;">
+        <div class="title">
+          <span class="eyebrow">Current issue · Q2 2026</span>
+          <h2>The Lobbyist <em class="gold" style="font-style:italic;font-weight:400;">Quarterly.</em></h2>
+        </div>
+
+      </div>
+
+      <div class="issue-row reveal">
+        <div>
+          <div class="serif" style="font-size:14px; color:var(--gold); letter-spacing:.12em;">VOLUME XII · ISSUE 02
+          </div>
+          <h2 class="serif" style="margin-top:14px; font-size: clamp(32px, 4vw, 48px);">
+            The <em class="gold" style="font-style:italic; font-weight:400;">perimeter shifts:</em>
+            digital assets, data, and the regulator who comes for both.
+          </h2>
+          <p class="soft" style="margin-top:24px; font-size:16px; line-height:1.7; max-width:560px;">
+            Twelve essays on the convergence of financial supervision
+            and data regulation, with case notes on three of the
+            year&apos;s most-cited arbitral awards.
+          </p>
+          <div class="meta">
+            <div>
+              <div class="l">Published</div>
+              <div class="v">May 2026</div>
+            </div>
+            <div>
+              <div class="l">Pages</div>
+              <div class="v">124</div>
+            </div>
+            <div>
+              <div class="l">ISSN</div>
+              <div class="v">2812-441X</div>
+            </div>
+          </div>
+          <div style="margin-top: 32px; display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="#" class="btn btn-primary">Read online <svg class="arrow" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></a>
+            <a href="#" class="btn btn-ghost">Download PDF</a>
+          </div>
+        </div>
+
+        <div class="issue-cover">
+          <div>
+            <div class="top">
+              <span>The Lobbyist Quarterly</span>
+              <span>Q2 · 2026</span>
+            </div>
+            <div class="rule"></div>
+            <div class="title">The<br />Perimeter<br />Shifts</div>
+          </div>
+          <div>
+            <div class="vol">Vol. XII · No. 02</div>
+            <div class="rule"></div>
+            <div class="toc">
+              <strong>I.</strong> OJK&apos;s digital perimeter<br />
+              <strong>II.</strong> SIAC 2026: a procedural audit<br />
+              <strong>III.</strong> Treaty arbitration in ASEAN<br />
+              <strong>IV.</strong> Case notes &amp; book reviews
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles in current issue -->
+  <section style="background: var(--bg-mute);">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="title">
+          <span class="eyebrow">In this issue</span>
+          <h2>Four long reads <em class="gold" style="font-style:italic;font-weight:400;">to take with you.</em></h2>
+        </div>
+      </div>
+
+      <div class="cards-wrapper reveal">
+        <a href="#" class="nav-arrow prev" aria-label="Previous card">‹</a>
+        <div class="cards-track">
+          <a href="#" class="issue-cover">
+            <div>
+              <div class="top"><span>ART. I</span><span>Q2 · 2026</span></div>
+              <div class="rule"></div>
+              <div class="title">The OJK&apos;s digital perimeter</div>
+            </div>
+            <div>
+              <div class="vol">Regulatory · Financial Supervision</div>
+              <div class="rule"></div>
+              <div class="toc">26 pp · 38 footnotes<br /><br />A doctrinal reading of the draft regulation and the shift
+                to entity-based supervision.</div>
+            </div>
+          </a>
+
+          <a href="#" class="issue-cover">
+            <div>
+              <div class="top"><span>ART. II</span><span>Q2 · 2026</span></div>
+              <div class="rule"></div>
+              <div class="title">SIAC&apos;s 2026 rules</div>
+            </div>
+            <div>
+              <div class="vol">Disputes · Arbitration</div>
+              <div class="rule"></div>
+              <div class="toc">18 pp · 22 footnotes<br /><br />A procedural audit with observations on emergency
+                arbitrators.</div>
+            </div>
+          </a>
+
+          <a href="#" class="issue-cover">
+            <div>
+              <div class="top"><span>ART. III</span><span>Q2 · 2026</span></div>
+              <div class="rule"></div>
+              <div class="title">Investor-state arbitration</div>
+            </div>
+            <div>
+              <div class="vol">Public International · Treaty</div>
+              <div class="rule"></div>
+              <div class="toc">22 pp · 41 footnotes<br /><br />Thirty years of ASEAN practice and a decade of treaty
+                doctrine.</div>
+            </div>
+          </a>
+
+          <a href="#" class="issue-cover">
+            <div>
+              <div class="top"><span>ART. IV</span><span>Q2 · 2026</span></div>
+              <div class="rule"></div>
+              <div class="title">The privileged review</div>
+            </div>
+            <div>
+              <div class="vol">Investigations · Compliance</div>
+              <div class="rule"></div>
+              <div class="toc">20 pp · 33 footnotes<br /><br />Lessons learned after ten years of privileged review,
+                disclosure and cadence.</div>
+            </div>
+          </a>
+        </div>
+        <a href="#" class="nav-arrow next" aria-label="Next card">›</a>
+      </div>
+    </div>
+  </section>
+
+
+  <div id="footer-mount"></div>
+  <script src="assets/shared.js"></script>
+  <script src="assets/chrome.js"></script>
+</body>
+
+</html>
